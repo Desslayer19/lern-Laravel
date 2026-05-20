@@ -12,7 +12,6 @@
       <a href="/blog/{{ $blog['slag'] }}" class="text-sky-900">Read more... &raquo;</a>
     </article>
   @endforeach
-
   <div class="flex mt-2">
     @for ($i = 1; $i <= 10; $i++)
       <div class="bg-sky-500 p-0 me-1 grid place-items-center w-8 h-8 text-white text-sm">{{ $i }}</div>
