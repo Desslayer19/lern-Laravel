@@ -20,9 +20,7 @@ Route::get('/blog', function () {
     return view('blog', ['title' => 'Blog'], ['blogs'=>$articles]);
 });
 
-Route::get('/blog/{id}', function ($id) {
-    $post = Post::find($id);
-
+Route::get('/blog/{post:slag}', function (Post $post) {
     return view('article', ['title' => 'Single Blog'], ['blog' => $post]);
 });
 
