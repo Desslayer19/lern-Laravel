@@ -6,7 +6,7 @@
         <h2 class="text-lg my-2 font-bold">{{ $blog['judul'] }}</h2>
       </a>
       <div class="text-gray-600 mb-2 flex mt-1">
-        <h4 class="text-gray-700">{{ $blog['pembuat'] }} | </h4> {{ $blog['tanggal'] }}
+        <h4 class="text-gray-700"><a href="{{ $blog->pembuat->name }}" class="hover:underline"> {{ $blog->pembuat->name }} </a> | </h4> {{ $blog['tanggal'] }}
       </div>
       <p>{{ Str::limit($blog['article'], 200) }}</p>
       <a href="/blog/{{ $blog['slag'] }}" class="text-sky-900">Read more... &raquo;</a>
