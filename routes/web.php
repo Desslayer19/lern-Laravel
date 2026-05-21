@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,10 @@ Route::get('/about', function () {
 Route::get('/blog', function () {
     $articles = Post::all();
     return view('blog', ['title' => 'Blog'], ['blogs'=>$articles]);
+});
+
+Route::get('/userBlog/{user}', function (User $user) {
+    return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
 });
 
 Route::get('/blog/{post:slag}', function (Post $post) {
