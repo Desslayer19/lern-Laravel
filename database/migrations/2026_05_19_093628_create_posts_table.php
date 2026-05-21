@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('slag');
             $table->string('judul');
-            $table->string('pembuat');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('tanggal');
             $table->text('article');
             $table->timestamps();
