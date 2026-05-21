@@ -31,7 +31,7 @@ class User extends Authenticatable
     }
 
     // menghubungkan data dengan foreign key
-    public function posts(): HasMany
+    public function blogs(): HasMany
     {
         return $this->hasMany(Post::class, 'user_id');
     }
