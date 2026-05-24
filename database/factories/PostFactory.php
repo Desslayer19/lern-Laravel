@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Post;
+use App\Models\Slag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -24,6 +25,7 @@ class PostFactory extends Factory
             'slag' => Str::slug($judul, '-'),
             'judul' => $judul,
             'user_id' => User::factory(),
+            'kategori_id' => Slag::factory(),
             'tanggal' => fake()->date('Y-m-d'),
             'article' => fake()->text(),
         ];

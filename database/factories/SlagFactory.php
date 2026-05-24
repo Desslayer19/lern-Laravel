@@ -19,7 +19,7 @@ class SlagFactory extends Factory
     {
         return [
             "jenis_slag" => fake()->randomKey(['Software enginer'=> 0, 'Delveloper IoT' => 1, 'Developer game' => 2, 'CMS developer' => 3]),
-            "nama_slag" => fake()->sentence()
+            "nama_slag" => fake()->sentence(rand(3,5))
         ];
     }
 }

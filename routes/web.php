@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Slag;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +19,15 @@ Route::get('/about', function () {
 
 Route::get('/blog', function () {
     $articles = Post::all();
-    return view('blog', ['title' => 'Blog'], ['blogs'=>$articles]);
+    return view('blog', ['title' => 'Blog', 'blogs'=>$articles]);
 });
 
-Route::get('/userBlog/{user}', function (User $user) {
+Route::get('/userBlog/{user:name}', function (User $user) {
     return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
+});
+
+Route::get('/category/{slag:jenis_slag}', function (Slag $jenis_slag) {
+    return view('blog', ['title' => "Article category". $jenis_slag->jenis_slag, "blogs" => $jenis_slag->blogsKategori]);
 });
 
 Route::get('/blog/{post:slag}', function (Post $post) {
