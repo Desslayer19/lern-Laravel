@@ -7,7 +7,7 @@
       <div class="text-gray-600 mb-2 flex mt-1">
         <h4 class="text-gray-700">
           <a href="/userBlog/{{ $blog->pembuat->name }}" class="hover:underline"> {{ $blog->pembuat->name }} </a> | 
-          <a href="/category/{{ $blog->kategori->jenis_slag }}" class="hover:underline"> {{ $blog->kategori->jenis_slag }} </a> | 
+          <a href="/category/{{ $blog->kategori->jenis_slag }}" class="hover:underline"> {{ $blog->kategori->nama_slag }} </a> | 
         </h4> {{ $blog['tanggal'] }}
       </div>
       <p>{{ Str::limit($blog['article'], 200) }}</p>

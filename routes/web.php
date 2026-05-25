@@ -26,12 +26,12 @@ Route::get('/userBlog/{user:name}', function (User $user) {
     return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
 });
 
-Route::get('/category/{slag:jenis_slag}', function (Slag $jenis_slag) {
-    return view('blog', ['title' => "Article category". $jenis_slag->jenis_slag, "blogs" => $jenis_slag->blogsKategori]);
+Route::get('/category/{slag:jenis_slag}', function (Slag $slag) {
+    return view('blog', ['title' => "Article category ". $slag->nama_slag, "blogs" => $slag->kategoryPosts]);
 });
 
 Route::get('/blog/{post:slag}', function (Post $post) {
-    return view('article', ['title' => 'Single Blog'], ['blog' => $post]);
+    return view('article', ['title' => 'Single Blog', 'blog' => $post]);
 });
 
 Route::get('/projek', function () {

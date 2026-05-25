@@ -12,7 +12,7 @@ class Slag extends Model
     protected $fillable = ['jenis_slag', 'nama_slag'];
     use HasFactory;
 
-    public function blogsKategori(): HasMany
+    public function kategoryPosts(): HasMany
     {
         return $this->hasMany(Post::class, 'kategori_id');
     }

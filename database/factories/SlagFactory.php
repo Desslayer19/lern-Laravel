@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Slag;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Slag>
@@ -17,9 +18,10 @@ class SlagFactory extends Factory
      */
     public function definition(): array
     {
+        $slag = fake()->randomKey(['Software enginer'=> 0, 'Delveloper IoT' => 1, 'Developer game' => 2, 'CMS developer' => 3]);
         return [
-            "jenis_slag" => fake()->randomKey(['Software enginer'=> 0, 'Delveloper IoT' => 1, 'Developer game' => 2, 'CMS developer' => 3]),
-            "nama_slag" => fake()->sentence(rand(3,5))
+            "jenis_slag" => Str::slug($slag),
+            "nama_slag" => $slag
         ];
     }
 }
