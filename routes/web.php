@@ -26,8 +26,8 @@ Route::get('/userBlog/{user:name}', function (User $user) {
     return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
 });
 
-Route::get('/category/{slag:jenis_slag}', function (Slag $slag) {
-    return view('blog', ['title' => "Article category ". $slag->nama_slag, "blogs" => $slag->kategoryPosts]);
+Route::get('/category/{slag:nama_slag}', function (Slag $slag) {
+    return view('blog', ['title' => "Article category ". $slag->jenis_slag, "blogs" => $slag->kategoryPosts]);
 });
 
 Route::get('/blog/{post:slag}', function (Post $post) {
