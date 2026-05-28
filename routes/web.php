@@ -18,11 +18,13 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
+    // $articles = Post::with(['pembuat', 'kategori'])->get();
     $articles = Post::all();
     return view('blog', ['title' => 'Blog', 'blogs'=>$articles]);
 });
 
 Route::get('/userBlog/{user:name}', function (User $user) {
+    // $post = $user->blogs->load('pembuat','kategori');
     return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
 });
 

@@ -12,6 +12,8 @@ class Post extends Model
     use HasFactory;
     protected $fillable = ['slag', 'judul', 'pembuat', 'tanggal', 'article'];
 
+    protected $with = ['pembuat', 'kategori'];
+
     public function pembuat(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
