@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('jenis_slag');
             $table->string('nama_slag');
+            $table->string('color_id');
             $table->timestamps();
         });
     }

@@ -1,22 +1,29 @@
 <x-content :title="$title">
-  @foreach ( $blogs as $blog )
-    <article class="mt-2 mb-5 text-gray-900 border-2 border-gray-300 rounded-xl p-5 shadow-xl">
-      <a href="/blog/{{ $blog['slag'] }}" class="hover:underline">
-        <h2 class="text-lg my-2 font-bold">{{ $blog['judul'] }}</h2>
-      </a>
-      <div class="text-gray-600 mb-2 flex mt-1">
-        <h4 class="text-gray-700">
-          <a href="/userBlog/{{ $blog->pembuat->name }}" class="hover:underline"> {{ $blog->pembuat->name }} </a> | 
-          <a href="/category/{{ $blog->kategori->nama_slag }}" class="hover:underline"> {{ $blog->kategori->jenis_slag }} </a> | 
-        </h4> {{ $blog['tanggal'] }}
+ 
+  <div class="w-6xl mx-auto p-5 grid gap-2 md:grid-cols-3">
+    @foreach ( $blogs as $blog )
+      <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-xl shadow-xs">
+        <div class="flex mb-3 justify-between">
+            <div class="px-5 rounded-xl {{ $blog->kategori->color_id }}">
+              <a href="/category/{{ $blog->kategori->nama_slag }}" class="text-sm text-sky-700 font-semibold"> {{ $blog->kategori->jenis_slag }}</a>
+            </div>
+            <h3 class="text-gray-500">{{ $blog->tanggal }}</h3>
+        </div>
+          <a href="/blog/{{ $blog['slag'] }}">
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading"> {{ $blog->slag }}</h5>
+          </a>
+          <p class="mb-3 text-body"> {{ Str::limit($blog->article, 100) }}</p>
+          <div class="flex justify-evenly mt-5">
+            <di class="flex flex-1 items-center gap-1">
+              <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Rounded avatar">
+              <a href="/userBlog/{{ $blog->pembuat->name }}" class="text-sm text-gray-500 mt-3">{{ $blog->pembuat->name }}</a>
+            </di>
+            <a href="/blog/{{ $blog['slag'] }}" class="inline-flex font-medium items-center text-fg-brand hover:underline">
+              See our guideline
+              <svg class="w-4 h-4 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"/></svg>
+          </a>
+          </div>
       </div>
-      <p>{{ Str::limit($blog['article'], 200) }}</p>
-      <a href="/blog/{{ $blog['slag'] }}" class="text-sky-900">Read more... &raquo;</a>
-    </article>
-  @endforeach
-  <div class="flex mt-2">
-    @for ($i = 1; $i <= 10; $i++)
-      <div class="bg-sky-500 p-0 me-1 grid place-items-center w-8 h-8 text-white text-sm">{{ $i }}</div>
-    @endfor
+    @endforeach
   </div>
 </x-content>

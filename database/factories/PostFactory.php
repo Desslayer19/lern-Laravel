@@ -20,7 +20,7 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $judul = fake()->sentence(rand(6,8));
+        $judul = fake()->sentence(rand(4,7));
         return [
             'slag' => Str::slug($judul, '-'),
             'judul' => $judul,

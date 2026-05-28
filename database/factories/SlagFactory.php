@@ -21,7 +21,7 @@ class SlagFactory extends Factory
         $slag = fake()->sentence(rand(3,5));
         return [
             "jenis_slag" => Str::slug($slag),
-            "nama_slag" => $slag
+            "nama_slag" => $slag,
         ];
     }
 }
