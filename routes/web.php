@@ -19,7 +19,7 @@ Route::get('/about', function () {
 
 Route::get('/blog', function () {
     // $articles = Post::with(['pembuat', 'kategori'])->get();
-    $articles = Post::all();
+    $articles = Post::latest()->get();
     return view('blog', ['title' => 'Blog', 'blogs'=>$articles]);
 });
 
