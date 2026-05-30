@@ -19,8 +19,12 @@ Route::get('/about', function () {
 
 Route::get('/blog', function () {
     // $articles = Post::with(['pembuat', 'kategori'])->get();
-    $articles = Post::latest()->get();
-    return view('blog', ['title' => 'Blog', 'blogs'=>$articles]);
+    $articles = Post::latest();
+    
+    if(request('search_key')){
+       $articles->where('judul', 'like','%' . request('search_key') . '%');
+    }
+    return view('blog', ['title' => 'Blog', 'blogs' => $articles->get()]);
 });
 
 Route::get('/userBlog/{user:name}', function (User $user) {

@@ -1,4 +1,13 @@
 <x-content :title="$title">
+
+    
+  <form class="max-w-sm mx-auto">
+    <div class="mb-5 flex gap-2">
+      <input type="text" id="serach" name="search_key" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-xl focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Cari blog" autocomplete="off"/>
+      <button type="submit" class="text-white bg-sky-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Search</button>
+    </div>
+  </form>
+
  
   <div class="w-6xl mx-auto p-5 grid gap-2 md:grid-cols-3">
     @foreach ( $blogs as $blog )
@@ -10,7 +19,7 @@
             <h3 class="text-gray-500">{{ $blog->tanggal }}</h3>
         </div>
           <a href="/blog/{{ $blog['slag'] }}">
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading"> {{ $blog->slag }}</h5>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight text-heading"> {{ $blog->judul }}</h5>
           </a>
           <p class="mb-3 text-body"> {{ Str::limit($blog->article, 100) }}</p>
           <div class="flex justify-evenly mt-5">
