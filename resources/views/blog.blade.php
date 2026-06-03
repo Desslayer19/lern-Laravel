@@ -1,7 +1,7 @@
 <x-content :title="$title">
 
     
-  <form class="max-w-sm mx-auto">
+  <form class="max-w-sm mx-auto mt-5">
     <div class="mb-5 flex gap-2">
       <input type="text" id="serach" name="search_key" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-xl focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Cari blog" autocomplete="off"/>
       <button type="submit" class="text-white bg-sky-500 box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-xl text-sm px-4 py-2.5 focus:outline-none">Search</button>
@@ -9,9 +9,9 @@
   </form>
 
  
-  <div class="w-6xl mx-auto p-5 grid gap-2 md:grid-cols-3">
+  <div class="w-7xl mx-auto p-5 grid gap-4 md:grid-cols-3">
     @foreach ( $blogs as $blog )
-      <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-xl shadow-xs">
+      <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-xl shadow-xl mt-5">
         <div class="flex mb-3 justify-between">
             <div class="px-5 rounded-xl {{ $blog->kategori->color_id }}">
               <a href="/category/{{ $blog->kategori->nama_slag }}" class="text-sm text-sky-700 font-semibold"> {{ $blog->kategori->jenis_slag }}</a>
