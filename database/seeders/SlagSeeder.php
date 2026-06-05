@@ -25,8 +25,8 @@ class SlagSeeder extends Seeder
        ]);
 
         Slag::create([
-        "jenis_slag" => "Artificial Intelegen & IoT",
-        "nama_slag" => "artifical-intelegen-&-IoT",
+        "jenis_slag" => "Machine learning",
+        "nama_slag" => "Machine-learning",
         "color_id" => "bg-green-200"
        ]);
     }

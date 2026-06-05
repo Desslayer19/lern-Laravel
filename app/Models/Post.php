@@ -28,10 +28,17 @@ class Post extends Model
     }
 
     #[Scope]
-    public function filter(Builder $key): void
+    public function filter(Builder $query, array $sortir): void
     {
-        if(request('search_key')){
-            $key->where('judul', 'like','%'. request('search_key') .'%');
-        }
+        $query->when($sortir['search_key'] ?? false, function ($query, $data){
+            return $query->where('judul', 'like','%'. $data .'%');
+        });
+
+        $query->when($sortir['kategori'] ?? false, function($query, $kategori){
+            return $query->whereHas('kategori', 
+                fn(Builder $query) =>
+                $query->where('nama_slag', $kategori)
+            );
+        });
     }
 }

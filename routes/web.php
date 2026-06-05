@@ -17,7 +17,7 @@ Route::get('/about', function () {
     return view('about', ['title' => 'About']);
 });
 
-Route::get('/blog', function (Requset $requset) {
+Route::get('/blog', function () {
     $articles = Post::latest()->filter(request(['search_key','kategori']))->get();
     // $articles = Post::latest()->where('kategori_id', 2);
     return view('blog', ['title' => 'Blog', 'blogs' => $articles]);
