@@ -24,8 +24,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $slug = fake()->name();
         return [
-            'name' => fake()->name(),
+            'name' => $slug,
+            'slug_name' => Str::slug($slug),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

@@ -18,21 +18,13 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
-    $articles = Post::latest()->filter(request(['search_key','kategori']))->get();
-    // $articles = Post::latest()->where('kategori_id', 2);
+    $articles = Post::latest()->filter(request(['search_key','kategori','pembuat']))->get();
+
     return view('blog', ['title' => 'Blog', 'blogs' => $articles]);
 });
 
-Route::get('/userBlog/{user:name}', function (User $user) {
-    // $post = $user->blogs->load('pembuat','kategori');
-    return view('blog', ['title' => "Article by ". $user->name, "blogs" => $user->blogs]);
-});
 
-Route::get('/category/{slag:nama_slag}', function (Slag $slag) {
-    return view('blog', ['title' => "Article category ". $slag->jenis_slag, "blogs" => $slag->kategoryPosts]);
-});
-
-Route::get('/blog/{post:slag}', function (Post $post) {
+Route::get('/blog/{post:judul}', function (Post $post) {
     return view('article', ['title' => 'Single Blog', 'blog' => $post]);
 });
 

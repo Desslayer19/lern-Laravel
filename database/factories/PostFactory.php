@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\Slag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory<Post>
@@ -22,7 +21,6 @@ class PostFactory extends Factory
     {
         $judul = fake()->sentence(rand(4,7));
         return [
-            'slag' => Str::slug($judul, '-'),
             'judul' => $judul,
             'user_id' => User::factory(),
             'kategori_id' => Slag::factory(),

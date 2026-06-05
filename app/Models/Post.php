@@ -33,11 +33,18 @@ class Post extends Model
         $query->when($sortir['search_key'] ?? false, function ($query, $data){
             return $query->where('judul', 'like','%'. $data .'%');
         });
-
+        // pencarian data di kategori blog
         $query->when($sortir['kategori'] ?? false, function($query, $kategori){
             return $query->whereHas('kategori', 
                 fn(Builder $query) =>
                 $query->where('nama_slag', $kategori)
+            );
+        });
+        // pencarian di penulis blog
+        $query->when($sortir['pembuat'] ?? false, function($query, $pembuat){
+            return $query->whereHas('pembuat', 
+                fn(Builder $query) =>
+                $query->where('slug_name', $pembuat)
             );
         });
     }

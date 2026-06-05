@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'name' => "Nofan",
+            'slug_name' => 'nofan',
             'email' => "nofann.fan@gmail.com",
             'email_verified_at' => now(),
             'password' => Hash::make('Nofan19!'),
