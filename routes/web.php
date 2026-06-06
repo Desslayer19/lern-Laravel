@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\Post;
-use App\Models\Slag;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,7 +16,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
-    $articles = Post::latest()->filter(request(['search_key','kategori','pembuat']))->get();
+    $articles = Post::latest()->filter(request(['search_key','kategori','pembuat']))->Paginate(6)->withQueryString();
 
     return view('blog', ['title' => 'Blog', 'blogs' => $articles]);
 });

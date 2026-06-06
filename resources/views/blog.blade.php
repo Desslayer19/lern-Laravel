@@ -15,8 +15,10 @@
     </div>
   </form>
  
+  {{ $blogs->links() }}
+
   <div class="w-7xl mx-auto p-5 grid gap-4 md:grid-cols-3">
-    @foreach ( $blogs as $blog )
+    @forelse ( $blogs as $blog )
       <div class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-xl shadow-xl mt-5">
         <div class="flex mb-3 justify-between">
             <div class="px-5 rounded-xl {{ $blog->kategori->color_id }}">
@@ -39,6 +41,11 @@
           </a>
           </div>
       </div>
-    @endforeach
+    @empty
+      <div class="">
+        <p class="text-semibold text-xl">Source data in the page not found!</p>
+        <a href="/blog" class="block hover:underline text-blue-700">&laquo; back to blogs..</a>
+      </div>
+    @endforelse
   </div>
 </x-content>
